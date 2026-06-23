@@ -1,7 +1,9 @@
 # Multi-Platform AI Generator
 
-An AI-powered tool designed to generate high-conversion marketing copy for **Instagram, Facebook, and TikTok**. This project demonstrates advanced Prompt Engineering techniques to ensure platform-specific tone and psychological triggers.
+[Click here to test the application in your browser](https://aiingressacademyinternship-udhlexljermuitksqkebbh.streamlit.app) *(Note: The first load may take up to a minute to initialize the AI model)*
 
+An AI-powered tool designed to generate high-conversion marketing copy for **Instagram, Facebook, and TikTok**. This project demonstrates advanced Prompt Engineering techniques to ensure platform-specific tone and psychological triggers.
+ttps://aiingressacademyinternship-udhlexljermuitksqkebbh.streamlit.app/
 ## Prompt Engineering Approach
 
 Instead of simple instructions, this project implements professional marketing frameworks to maximize AI output quality:
