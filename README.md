@@ -1,9 +1,9 @@
 # Multi-Platform AI Generator
 
-[Click here to test the application in your browser](https://aiingressacademyinternship-udhlexljermuitksqkebbh.streamlit.app) *(Note: The first load may take up to a minute to initialize the AI model)*
+[Click here to test the application in your browser](https://aiingressacademyinternship-udhlexljermuitksqkebbh.streamlit.app)
 
 An AI-powered tool designed to generate high-conversion marketing copy for **Instagram, Facebook, and TikTok**. This project demonstrates advanced Prompt Engineering techniques to ensure platform-specific tone and psychological triggers.
-ttps://aiingressacademyinternship-udhlexljermuitksqkebbh.streamlit.app/
+
 ## Prompt Engineering Approach
 
 Instead of simple instructions, this project implements professional marketing frameworks to maximize AI output quality:
@@ -21,15 +21,10 @@ For Facebook, I implemented the **AIDA (Attention, Interest, Desire, Action)** f
 ### 3. TikTok: Pattern Interrupt
 TikTok users scroll rapidly. The prompt uses the **Pattern Interrupt** technique to generate "Hooks" that break the user's scrolling habit within the first 3 seconds.
 
-## Texnologiyalar
-- **Dil:** Python
-- **AI Model:** Google Gemini 2.5 Flash
-- **Kitabxanalar:** `google-generativeai`, `python-dotenv`
-
 ## Installation & Setup
 1. **Clone the repository**: `git clone https://github.com/sizin-adiniz/ai-ad-generator.git`
 2. **Install dependencies**: `pip install -r requirements.txt`
-3. **Set up API Key**: Create a `.env` file in the root directory and add your `GEMINI_API_KEY`
+3. **Set up API Key**: Add your `GEMINI_API_KEY`
 4. **Run the application**: `python main.py`
 
 ## 1) Case Study
