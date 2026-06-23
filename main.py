@@ -1,10 +1,12 @@
-import os
+%%writefile app.py
+import streamlit as st
 import google.generativeai as genai
-from dotenv import load_dotenv
 
-load_dotenv()
-api_key = os.getenv("GEMINI_API_KEY")
-genai.configure(api_key=api_key)
+try:
+    api_key = st.secrets["GEMINI_API_KEY"]
+    genai.configure(api_key=api_key)
+except Exception as e:
+    st.error("API Key not found. Please add GEMINI_API_KEY to Streamlit Secrets.")
 
 system_prompt = """
 You are a world-class Digital Marketing Strategist and high-conversion Copywriter. 
@@ -63,24 +65,33 @@ CTA: [Strong Call to Action]
 Hook: [Catchy short sentence]
 ---
 """
-
 model = genai.GenerativeModel(
     model_name='gemini-2.5-flash', 
     system_instruction=system_prompt
 )
 
-def generate_ads(business_name, product_service):
-    user_prompt = f"Biznes Adı: {business_name}\nMəhsul/Xidmət: {product_service}"
+@st.cache_data(show_spinner=False)
+def get_ai_response(business_name, product_service):
+    user_prompt = f"Business Name: {business_name}\nProduct/Service: {product_service}"
     try:
         response = model.generate_content(user_prompt)
         return response.text
     except Exception as e:
-        return f"Xəta baş verdi: {e}"
+        return f"An error occurred: {e}"
 
-if __name__ == "__main__":
-    print(" AI Reklam Generatoruna Xoş Gəlmisiniz!\n")
-    b_name = input("Biznesinizin adını daxil edin: ")
-    p_service = input("Məhsul və ya xidmətiniz nədir: ")
-    
-    print("\n Reklamlarınız hazırlanır...\n")
-    print(generate_ads(b_name, p_service))
+
+st.set_page_config(page_title="AI Ad Generator")
+st.title(" Multi-Platform AI Ad Generator")
+st.write("Enter your business details below to generate high-conversion ads!")
+
+business_name = st.text_input("Business Name", placeholder="e.g. CodeAcademy AZ")
+product_service = st.text_area("Product/Service", placeholder="e.g. 3-month Python course")
+
+if st.button("Generate Ads ✨"):
+    if business_name and product_service:
+        with st.spinner("Generating your ads..."):
+            result = get_ai_response(business_name, product_service)
+            st.markdown("---")
+            st.text(result)
+    else:
+        st.warning("Please fill in both fields!")
